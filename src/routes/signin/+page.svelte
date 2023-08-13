@@ -1,47 +1,37 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { auth } from "$lib/firebase";
     import { currentUser } from "$lib/stores/authStore";
-    import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
     import GoogleSignIn from "$lib/components/GoogleSignIn/index.svelte";
     import InputField from "$lib/components/InputField/index.svelte";
     import SignInButton from "$lib/components/SignInButton/index.svelte";
+    import LogoHeader from "$lib/components/LogoHeader/index.svelte";
+
+    import { signInWithGoogle, signInWithEmailAndPassword, signOut } from "$lib/scripts/firebase";
 
     let email: string;
     let password: string;
 
-    async function signInWithGoogle() {
-        try {
-            const provider = new GoogleAuthProvider();
-            await signInWithPopup(auth, provider);
-            goto("/");
-        } catch (e) {
-            console.log("Failed to log in using pop up");
-        }
+    async function _signInWithGoogle() {
+        await signInWithGoogle();
+        goto("/");
     }
 
     async function _signInWithEmailAndPassword() {
-        try {
-            const trimmedEmail = email.replaceAll(/\s/g, ``);
-
-            await signInWithEmailAndPassword(auth, trimmedEmail, password);
-            goto("/");
-        } catch (e) {
-            console.log("Failed to log in using email and password");
-        }
+        await signInWithEmailAndPassword(email, password);
+        goto("/");
     }
 
     async function _signOut() {
-        await signOut(auth);
+        await signOut();
+        goto("/signin");
     }
 </script>
 
 <div id="wrapper">
     <div id="leftSide">
         <div id="header">
-            <h1 id="title">CalendarDB</h1>
-            <h3 id="subtitle">v2.0.24</h3>
+            <LogoHeader />
         </div>
 
         <div id="signInWrapper">
@@ -67,7 +57,7 @@
                     </div>
                     <div id="buttons">
                         <SignInButton on:click={_signInWithEmailAndPassword} />
-                        <GoogleSignIn on:click={signInWithGoogle} />
+                        <GoogleSignIn on:click={_signInWithGoogle} />
                     </div>
 
                     <div id="noAccount">
@@ -129,36 +119,15 @@
 
             #header {
                 display: flex;
+                width: 100%;
+                box-sizing: border-box;
+                height: 4.6875rem;
+                padding: 0.875rem 0.9375rem;
                 flex-direction: column;
+                justify-content: center;
                 align-items: flex-start;
                 gap: 0.5rem;
-                align-self: stretch;
-
-                padding: 1.5rem;
-
-                #title {
-                    color: $primary-grey;
-                    leading-trim: both;
-                    text-edge: cap;
-
-                    /* Secondary */
-                    font-family: Work Sans;
-                    font-size: 1.5rem;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: normal;
-                }
-
-                #subtitle {
-                    color: $primary-grey-70;
-                    leading-trim: both;
-                    text-edge: cap;
-                    font-family: Work Sans;
-                    font-size: 0.75rem;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                }
+                flex-shrink: 0;
             }
 
             #signInWrapper {
