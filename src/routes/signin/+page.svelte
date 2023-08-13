@@ -5,8 +5,8 @@
     import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
     import GoogleSignIn from "$lib/components/GoogleSignIn/index.svelte";
-    import InputField from "$lib/components/inputField/index.svelte";
-    import SignInButton from "$lib/components/signInButton/index.svelte";
+    import InputField from "$lib/components/InputField/index.svelte";
+    import SignInButton from "$lib/components/SignInButton/index.svelte";
 
     let email: string;
     let password: string;
