@@ -29,7 +29,10 @@ export type CalendarEvent = {
 }
 
 export type RepeatingCalendarEvent = CalendarEvent & {
-	repeat: Frequency
+	repeat: {
+		frequency: Frequency,
+		interval: string
+	}
 }
 
 // REPEATING THINGS
