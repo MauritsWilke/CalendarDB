@@ -1,6 +1,6 @@
 type Brand<K, T> = K & { __brand: T };
 
-type ColourHex = `#${string}`;
+export type ColourHex = `#${string}`;
 
 type CustomKey =
 	{ type: "string", value: string } |

@@ -1,5 +1,4 @@
 import { Calendar } from "$lib/scripts/Calendar";
-import { Event } from "$lib/scripts/Event";
 import { describe, expect, it } from "vitest";
 
 describe("calendar suite", () => {
@@ -14,8 +13,4 @@ describe("calendar suite", () => {
 		const res = cal.getRange();
 
 	})
-})
-
-describe("event suite", () => {
-
 })
