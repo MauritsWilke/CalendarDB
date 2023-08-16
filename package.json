@@ -24,6 +24,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@js-temporal/polyfill": "^0.4.4",
 		"firebase": "^10.1.0"
 	}
 }

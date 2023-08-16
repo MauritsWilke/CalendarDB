@@ -10,6 +10,7 @@ CalendarDB is a calendar app for people who want the level of customisation a No
  - [`SCSS`](https://sass-lang.com/): Used for  styling
  - [`Vitest`](https://vitest.dev/): Used for unit tests
  - [`Firebase`](https://firebase.google.com/): Used for auth and as database ([`Firestore`](https://firebase.google.com/docs/firestore))
+ - [`Temporal Polyfill`](https://github.com/js-temporal/temporal-polyfill) Gets a shout-out because it's the backbone of this project.
 
 ### 🚀 Running
  - Clone the repository locally

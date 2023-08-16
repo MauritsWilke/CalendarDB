@@ -1,13 +1,19 @@
 <script lang="ts">
     import LogoHeader from "$lib/components/LogoHeader/index.svelte";
     import Divider from "$lib/components/Divider/index.svelte";
+    import MiniCalendar from "$lib/components/MiniCalendar/index.svelte";
 </script>
 
 <div id="wrapper">
     <div id="header">
         <LogoHeader />
     </div>
+
     <Divider />
+
+    <div id="miniCalendar">
+        <MiniCalendar />
+    </div>
 </div>
 
 <style lang="scss">
@@ -15,6 +21,9 @@
         width: 17.5rem;
         height: 100vh;
         flex-shrink: 0;
+
+        border-right: 2px solid $border;
+        background: $off-white;
 
         #header {
             display: flex;
@@ -27,6 +36,10 @@
             align-items: flex-start;
             gap: 0.5rem;
             flex-shrink: 0;
+        }
+
+        #miniCalendar {
+            padding: 1rem;
         }
     }
 </style>
