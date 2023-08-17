@@ -68,9 +68,15 @@
     function doSomethingWithDay(day: Temporal.PlainDate) {
         console.log(day.toString());
     }
+
+    function resetDelta(e: MouseEvent) {
+        if (e.button === 1) DELTA = 0;
+    }
 </script>
 
-<div id="wrapper">
+<!-- Middle clicking to reset delta seemed like a good feature to me, a11y disagreed -->
+<!-- svelte-ignore a11y-click-events-have-key-events a11y-no-static-element-interactions -->
+<div id="wrapper" on:auxclick={resetDelta}>
     <div id="header">
         <p id="monthName">{visibleMonthName} {visibleYear}</p>
 

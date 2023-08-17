@@ -1,7 +1,7 @@
 <script lang="ts">
     import LogoHeader from "$lib/components/LogoHeader/index.svelte";
     import Divider from "$lib/components/Divider/index.svelte";
-    import MiniCalendar from "$lib/components/MiniCalendar/index.svelte";
+    import MiniCalendar from "$lib/components/LeftSidebar/MiniCalendar/index.svelte";
 </script>
 
 <div id="wrapper">
