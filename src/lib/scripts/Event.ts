@@ -23,8 +23,8 @@ export class Event {
 			});
 			this._data.title = title;
 		} catch (e) {
-			console.log("Failed to update the title.");
-			// TODO proper error handling
+			console.log(e);
+			return Promise.reject(new Error(`Failed to update the document.`))
 		}
 	}
 
@@ -38,8 +38,8 @@ export class Event {
 			})
 			this._data.icon = icon;
 		} catch (e) {
-			console.log("Failed to update the icon.");
-			// TODO proper error handling
+			console.log(e);
+			return Promise.reject(new Error(`Failed to update the document.`))
 		}
 	}
 
@@ -66,8 +66,8 @@ export class Event {
 				fill: fill as ColourHex
 			}
 		} catch (e) {
-			console.log("Failed to update the colours");
-			// TODO proper error handling
+			console.log(e);
+			return Promise.reject(new Error(`Failed to update the document.`))
 		}
 	}
 
@@ -78,8 +78,8 @@ export class Event {
 			})
 			this._data.checked = toggled;
 		} catch (e) {
-			console.log("Failed to update the checked value.");
-			// TODO proper error handling
+			console.log(e);
+			return Promise.reject(new Error(`Failed to update the document.`))
 		}
 	}
 
@@ -99,8 +99,8 @@ export class Event {
 			if (date?.allDay !== undefined) this._data.date.allDay = date.allDay
 
 		} catch (e) {
-			console.log("Failed to update the date.");
-			// TODO proper error handling
+			console.log(e);
+			return Promise.reject(new Error(`Failed to update the document.`))
 		}
 	}
 
@@ -110,8 +110,8 @@ export class Event {
 			if (!res) return Promise.reject(new Error("Failed to fetch data from Firestore"));
 			this._data = res.data() as CalendarEvent;
 		} catch (e) {
-			console.log("Failed to fetch data from firstore");
-			// TODO proper error handling
+			console.log(e);
+			return Promise.reject(new Error(`Failed to fetch the document.`))
 		}
 		return this.data;
 	}
