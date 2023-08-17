@@ -2,6 +2,7 @@
     import LogoHeader from "$lib/components/LogoHeader/index.svelte";
     import Divider from "$lib/components/Divider/index.svelte";
     import MiniCalendar from "$lib/components/LeftSidebar/MiniCalendar/index.svelte";
+    import Search from "$lib/components/LeftSidebar/Search/index.svelte";
 </script>
 
 <div id="wrapper">
@@ -11,8 +12,12 @@
 
     <Divider />
 
-    <div id="miniCalendar">
-        <MiniCalendar />
+    <div id="content">
+        <div id="miniCalendar">
+            <MiniCalendar />
+        </div>
+
+        <Search />
     </div>
 </div>
 
@@ -38,7 +43,11 @@
             flex-shrink: 0;
         }
 
-        #miniCalendar {
+        #content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
             padding: 1rem;
         }
     }
