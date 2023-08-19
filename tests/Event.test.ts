@@ -1,10 +1,19 @@
 import { db } from "$lib/firebase";
 import { Event } from "$lib/scripts/Event";
 import type { CalendarEvent } from "$lib/scripts/types";
+import { Temporal } from "@js-temporal/polyfill";
 import { QueryDocumentSnapshot, collection, doc, getDocs } from "firebase/firestore";
 import { describe, expect, it } from "vitest";
 
 const UID = "2cDcODQESCfqSKfMNRE45wiVd7q1";
+
+const settings = {
+	eventTitle: false,
+	icon: false,
+	colour: false,
+	checked: false,
+	date: false,
+}
 
 describe("event suite", async () => {
 	// Temp setup :)
@@ -14,7 +23,7 @@ describe("event suite", async () => {
 	const e = events.docs[0] as QueryDocumentSnapshot<CalendarEvent>;
 	const event = new Event(e);
 
-	it("should update the event title", async () => {
+	it.skipIf(settings.eventTitle)("should update the event title", async () => {
 		const newTitle = `Vitest :D ${Date.now()}`
 
 		await event.setTitle(newTitle);
@@ -22,7 +31,7 @@ describe("event suite", async () => {
 		expect(event.data.title).toBe(newTitle);
 	})
 
-	it("should update the event icon", async () => {
+	it.skipIf(settings.icon)("should update the event icon", async () => {
 		const randomEmojis = ["🎃", "🎁", "🐈", "🛒", "🥭", "🍎", "🍏", "🍅", "🍇", "🍈"]
 		const newIcon = randomEmojis[Math.floor(Math.random() * randomEmojis.length)];
 
@@ -33,7 +42,7 @@ describe("event suite", async () => {
 		expect(event.data.icon).toBe(newIcon);
 	})
 
-	it("should update the colour", async () => {
+	it.skipIf(settings.colour)("should update the colour", async () => {
 		const newHex = "#6C9B7D";
 		const expectedFill = "#E3EFE5";
 
@@ -44,7 +53,7 @@ describe("event suite", async () => {
 		expect(event.data.colour.fill).toBe(expectedFill);
 	})
 
-	it("should toggle checked", async () => {
+	it.skipIf(settings.checked)("should toggle checked", async () => {
 		await event.setChecked(true);
 		await event.refetchEvent();
 		expect(event.data.checked).toBe(true);
@@ -54,9 +63,9 @@ describe("event suite", async () => {
 		expect(event.data.checked).toBe(false);
 	})
 
-	it("should update the date", async () => {
-		const startDate = Date.now();
-		const endDate = Date.now() + 1 * 60 * 60 * 1000;
+	it.skipIf(settings.date)("should update the date", async () => {
+		const startDate = Temporal.Now.instant().epochMilliseconds;
+		const endDate = Temporal.Now.instant().epochMilliseconds + 1 * 60 * 60 * 1000;
 
 		expect(async () => await event.setDate({})).rejects.toThrowError(/one/);
 
