@@ -30,6 +30,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@js-temporal/polyfill": "^0.4.4",
+		"firebase": "^10.7.1",
 		"svelte-preprocess": "^5.1.3"
 	}
 }
