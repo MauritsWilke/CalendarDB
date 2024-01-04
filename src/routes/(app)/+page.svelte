@@ -1,6 +1,21 @@
 <script lang="ts">
-    import { signOut } from "scripts/firebase/auth";
+    import LeftSidebar from "components/leftSidebar/index.svelte";
+    import RightSidebar from "components/rightSidebar/index.svelte";
+    import View from "components/view/index.svelte";
 </script>
 
-<h1>Are ya logged in laddy? 🦜</h1>
-<button on:click={signOut}>Sign out</button>
+<div id="wrapper">
+    <LeftSidebar />
+    <View />
+    <RightSidebar />
+</div>
+
+<style lang="scss">
+    #wrapper {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: row;
+    }
+</style>
