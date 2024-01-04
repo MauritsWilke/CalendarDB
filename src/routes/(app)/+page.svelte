@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { _signOut } from "scripts/firebase/auth/signOut";
+    import { signOut } from "scripts/firebase/auth";
 </script>
 
 <h1>Are ya logged in laddy? 🦜</h1>
-<button on:click={_signOut}>Sign out</button>
+<button on:click={signOut}>Sign out</button>

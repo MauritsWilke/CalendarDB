@@ -1,7 +1,6 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
-    import { signInWithGoogle } from "scripts/firebase/auth/signInWithGoogle";
-    import { signInWithEmailAndPassword } from "scripts/firebase/auth/signInWithEmailAndPassword";
+    import { signInWithGoogle, signInWithEmailAndPassword } from "scripts/firebase/auth";
 
     async function _signInWithGoogle() {
         await signInWithGoogle();
