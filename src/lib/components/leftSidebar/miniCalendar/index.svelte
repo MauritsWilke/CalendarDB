@@ -62,9 +62,17 @@
         // TODO add functionality to this
         console.log(day.toString());
     }
+
+    function scrollEvent(e: WheelEvent) {
+        // TODO decide on functionality -> shift+scroll = year?
+        // TODO is scrolling up delta++ or delta--
+        if (e.ctrlKey) return;
+        if (e.deltaY > 0) DELTA--;
+        if (e.deltaY < 0) DELTA++;
+    }
 </script>
 
-<div id="wrapper" on:auxclick={resetDelta}>
+<div id="wrapper" on:auxclick={resetDelta} on:wheel={scrollEvent}>
     <div id="header">
         <p id="monthName">{monthNames[visibleMonth - 1]} {visibleYear}</p>
 
