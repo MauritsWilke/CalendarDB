@@ -3,6 +3,7 @@
 CalendarDB is a calendar app for people who want the level of customisation a NoSQL database offers. The interface will be intuitive for those who have used Notion databases.
 
 ## 💻 Developing
+If you're interested in contributing, search for `TODO` in the codebase! There are a lot of little things I haven't gotten around to implementing yet.
 
 ### 🧰 Stack
  - [`SvelteKit`](https://kit.svelte.dev/): Framework used
