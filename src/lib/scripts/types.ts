@@ -1,0 +1,1 @@
+export type Views = "Day" | "Week" | "Month" | "Table";
