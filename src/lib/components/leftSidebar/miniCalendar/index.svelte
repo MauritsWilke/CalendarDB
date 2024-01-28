@@ -67,8 +67,8 @@
         // TODO decide on functionality -> shift+scroll = year?
         // TODO is scrolling up delta++ or delta--
         if (e.ctrlKey) return;
-        if (e.deltaY > 0) DELTA--;
-        if (e.deltaY < 0) DELTA++;
+        if (e.deltaY > 0) DELTA++;
+        if (e.deltaY < 0) DELTA--;
     }
 </script>
 
