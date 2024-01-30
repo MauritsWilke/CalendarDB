@@ -292,17 +292,6 @@
                         }
                     }
 
-                    .today {
-                        background: $highlight;
-
-                        color: #fff;
-
-                        &:hover {
-                            background: mix($border, $highlight, 20%);
-                            cursor: pointer;
-                        }
-                    }
-
                     .previousMonth {
                         @include defaultBox;
                         color: $primary-grey-70;
@@ -312,6 +301,17 @@
 
                         font-size: 0.75rem;
                         font-weight: 400;
+                    }
+
+                    .today {
+                        background: $highlight;
+
+                        color: #fff;
+
+                        &:hover {
+                            background: mix($border, $highlight, 20%);
+                            cursor: pointer;
+                        }
                     }
                 }
             }
