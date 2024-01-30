@@ -18,9 +18,16 @@
         visible = false;
         selectedView = e.text;
     }
+
+    function clickOutside(node: Node) {
+        document.addEventListener("click", (e) => {
+            const path = e.composedPath();
+            if (!path.includes(node)) visible = false;
+        });
+    }
 </script>
 
-<div id="wrapper">
+<div id="wrapper" use:clickOutside>
     <button id="button" class:clicked={visible} on:click={() => (visible = !visible)}>
         <p id="selectedView">{selectedView}</p>
         <img src="/icons/keyboard_arrow_down.svg" alt="arrow down" />
@@ -74,6 +81,8 @@
                 font-size: 0.75rem;
                 font-weight: 400;
             }
+
+            // TODO add smooth animation to this
         }
 
         .clicked {
