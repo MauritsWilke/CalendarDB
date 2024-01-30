@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Head from "components/head/index.svelte";
     import { goto } from "$app/navigation";
     import { signInWithGoogle, signInWithEmailAndPassword } from "scripts/firebase/auth";
 
@@ -15,6 +16,8 @@
         goto("/");
     }
 </script>
+
+<Head title={"Sign In | CalendarDB"} description={"Sign in to CalendarDB"} />
 
 <button on:click={_signInWithGoogle}>Sign in</button>
 

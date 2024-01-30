@@ -2,7 +2,10 @@
     import LeftSidebar from "components/leftSidebar/index.svelte";
     import RightSidebar from "components/rightSidebar/index.svelte";
     import View from "components/view/index.svelte";
+    import Head from "components/head/index.svelte";
 </script>
+
+<Head title={"App | CalendarDB"} description={"CalendarDB homepage"} />
 
 <div id="wrapper">
     <LeftSidebar />
