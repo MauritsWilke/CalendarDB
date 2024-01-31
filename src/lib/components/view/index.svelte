@@ -1,6 +1,8 @@
 <script lang="ts">
-    import { type Views } from "scripts/types";
     import ViewDropdown from "./viewDropdown/index.svelte";
+    import Month from "./month/index.svelte";
+
+    import { type Views } from "scripts/types";
     import { Temporal } from "@js-temporal/polyfill";
 
     // Constants
@@ -10,9 +12,11 @@
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     // Variables
+    // TODO store these settings in localStorage?
     let visibleMonth = monthNames[currentDate.month - 1];
     let visibleYear = currentDate.year;
     let selectedView: Views = "Month";
+    let showWeekends = true;
 </script>
 
 <div id="wrapper">
@@ -23,9 +27,12 @@
         </div>
 
         <div id="controls">
-            <ViewDropdown bind:selectedView></ViewDropdown>
-            <!-- <p>{selectedView}</p> -->
+            <ViewDropdown bind:selectedView bind:showWeekends></ViewDropdown>
         </div>
+    </div>
+
+    <div id="view">
+        <Month {showWeekends}></Month>
     </div>
 </div>
 
@@ -33,6 +40,7 @@
     #wrapper {
         display: flex;
         align-items: start; // Prevents children from stretching
+        flex-direction: column;
         width: 100%;
 
         #header {
@@ -82,6 +90,19 @@
                     bottom: 1.5rem;
                     right: 1rem;
                 }
+            }
+        }
+
+        #view {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            padding: {
+                left: 1rem;
+                right: 1rem;
             }
         }
     }
