@@ -1,8 +1,9 @@
 <script lang="ts">
+    import { dayAbbreviations } from "scripts/translations";
+    import { capitalise } from "scripts/utils";
     export let showWeekends = true;
 
     // Constants
-    const dayTitles = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
     // Variables
     let visibleWeeks = [[], [], [], [], [], [], [], [], [], []]; // TODO find a good number for here
@@ -10,10 +11,10 @@
 
 <div id="wrapper">
     <div id="dayNames">
-        {#each dayTitles as day, i}
+        {#each dayAbbreviations as day, i}
             {#if showWeekends || i < 5}
                 <div class="nameWrapper">
-                    <p class="name">{day}</p>
+                    <p class="name">{capitalise(day)}</p>
                 </div>
             {/if}
         {/each}

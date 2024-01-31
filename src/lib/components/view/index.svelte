@@ -2,14 +2,14 @@
     import ViewDropdown from "./viewDropdown/index.svelte";
     import Month from "./month/index.svelte";
 
+    import { monthNames } from "scripts/translations";
+    import { capitalise } from "scripts/utils";
     import { type Views } from "scripts/types";
     import { Temporal } from "@js-temporal/polyfill";
 
     // Constants
     const calendar = new Temporal.Calendar("iso8601");
     const currentDate = Temporal.Now.plainDate(calendar);
-    // TODO This line is in several places, maybe central place with naming and such
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     // Variables
     // TODO store these settings in localStorage?
@@ -22,7 +22,7 @@
 <div id="wrapper">
     <div id="header">
         <div id="info">
-            <p id="month">{visibleMonth}</p>
+            <p id="month">{capitalise(visibleMonth)}</p>
             <p id="year">{visibleYear}</p>
         </div>
 
