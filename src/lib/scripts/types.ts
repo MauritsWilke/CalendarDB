@@ -1,1 +1,1 @@
-export type Views = "Day" | "Week" | "Month" | "Table";
+export type Views = "day" | "week" | "month" | "table";

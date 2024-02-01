@@ -1,22 +1,26 @@
 <script lang="ts">
+    import { t } from "i18next";
     import { type Views } from "scripts/types";
     import Checkbox from "./checkbox/index.svelte";
-    export let selectedView: Views = "Month";
+    import { capitalise } from "scripts/utils";
+    export let selectedView: Views = "month";
     export let showWeekends = true;
 
     let visible = false;
 
-    type SelectOption = { text: Views; shortcut: string };
+    const getTimeUnit = (unit: string) => capitalise(t(`generic.timeUnits.${unit}`, { count: 1, defaultValue: "Table" }));
+
+    type SelectOption = { value: Views; shortcut: string; text: string };
     const selectOptions: SelectOption[] = [
-        { text: "Day", shortcut: "D" },
-        { text: "Week", shortcut: "W" },
-        { text: "Month", shortcut: "M" },
-        { text: "Table", shortcut: "T" },
+        { value: "day", shortcut: "D", text: getTimeUnit("day") },
+        { value: "week", shortcut: "W", text: getTimeUnit("week") },
+        { value: "month", shortcut: "M", text: getTimeUnit("month") },
+        { value: "table", shortcut: "T", text: "Table" },
     ];
 
     function updateView(e: SelectOption) {
         visible = false;
-        selectedView = e.text;
+        selectedView = e.value;
     }
 
     function clickOutside(node: Node) {
@@ -29,7 +33,7 @@
 
 <div id="wrapper" use:clickOutside>
     <button id="button" class:clicked={visible} on:click={() => (visible = !visible)}>
-        <p id="selectedView">{selectedView}</p>
+        <p id="selectedView">{getTimeUnit(selectedView)}</p>
         <img src="/icons/keyboard_arrow_down.svg" alt="arrow down" />
     </button>
 
@@ -45,7 +49,7 @@
             <div id="line"></div>
 
             <button class="selectable" on:click={() => (showWeekends = !showWeekends)}>
-                <p class="text">Show weekends</p>
+                <p class="text">{t("generic.showWeekends")}</p>
                 <Checkbox bind:checked={showWeekends}></Checkbox>
             </button>
         </div>

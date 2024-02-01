@@ -6,8 +6,9 @@ i18next
 	.use(HttpApi)
 	.init<HttpBackendOptions>({
 		lng: "nl",
+		fallbackLng: "en",
 		backend: {
-			"loadPath": "/locales/{{lng}}/default.json"
+			"loadPath": "/locales/{{lng}}/default.json",
 		},
 	});
 

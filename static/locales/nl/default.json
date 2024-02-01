@@ -31,6 +31,24 @@
 			"5": "vr",
 			"6": "za",
 			"7": "zo"
-		}
+		},
+		"dayLetterAbbreviations": {
+			"1": "m",
+			"2": "d",
+			"3": "w",
+			"4": "d",
+			"5": "v",
+			"6": "z",
+			"7": "z"
+		},
+		"timeUnits": {
+			"day_one": "dag",
+			"day_other": "dagen",
+			"week_one": "week",
+			"week_other": "weken",
+			"month_one": "maand",
+			"month_other": "maanden"
+		},
+		"showWeekends": "Weekenden tonen"
 	}
 }

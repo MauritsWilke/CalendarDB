@@ -1,10 +1,10 @@
 <script lang="ts">
     import { Temporal } from "@js-temporal/polyfill";
+    import { dayLetterAbbreviations, monthNames } from "scripts/translations";
+    import { capitalise } from "scripts/utils";
     export let weekNumbers = true;
 
     // Constants
-    const dayTitles = ["M", "T", "W", "T", "F", "S", "S"];
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const calendar = new Temporal.Calendar("iso8601");
     const currentDate = Temporal.Now.plainDate(calendar);
     type visibleDay = Temporal.PlainDate;
@@ -74,7 +74,7 @@
 
 <div id="wrapper" on:auxclick={resetDelta} on:wheel={scrollEvent}>
     <div id="header">
-        <p id="monthName">{monthNames[visibleMonth - 1]} {visibleYear}</p>
+        <p id="monthName">{capitalise(monthNames[visibleMonth - 1])} {visibleYear}</p>
 
         <div id="controls">
             <button on:click={() => DELTA--}>
@@ -99,9 +99,9 @@
 
         <div id="weeks">
             <div id="weekTitles">
-                {#each dayTitles as dayTitle}
+                {#each dayLetterAbbreviations as dayTitle}
                     <div class="dayTitle">
-                        <p>{dayTitle}</p>
+                        <p>{capitalise(dayTitle)}</p>
                     </div>
                 {/each}
             </div>
