@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { dayAbbreviations } from "scripts/translations";
+    import { dayAbbreviations } from "scripts/localisation/translations";
     import { capitalise } from "scripts/utils";
     export let showWeekends = true;
 

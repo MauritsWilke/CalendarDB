@@ -2,7 +2,7 @@
     import ViewDropdown from "./viewDropdown/index.svelte";
     import Month from "./month/index.svelte";
 
-    import { monthNames } from "scripts/translations";
+    import { monthNames } from "scripts/localisation/translations";
     import { capitalise } from "scripts/utils";
     import { type Views } from "scripts/types";
     import { Temporal } from "@js-temporal/polyfill";
@@ -15,7 +15,7 @@
     // TODO store these settings in localStorage?
     let visibleMonth = monthNames[currentDate.month - 1];
     let visibleYear = currentDate.year;
-    let selectedView: Views = "Month";
+    let selectedView: Views = "month";
     let showWeekends = true;
 </script>
 

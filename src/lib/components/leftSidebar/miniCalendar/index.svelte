@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Temporal } from "@js-temporal/polyfill";
-    import { dayLetterAbbreviations, monthNames } from "scripts/translations";
+    import { dayLetterAbbreviations, monthNames } from "scripts/localisation/translations";
     import { capitalise } from "scripts/utils";
     export let weekNumbers = true;
 
