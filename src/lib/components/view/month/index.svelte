@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { dayAbbreviations } from "scripts/localisation/translations";
+    import { t } from "i18next";
     import { capitalise } from "scripts/utils";
     export let showWeekends = true;
 
@@ -11,10 +11,10 @@
 
 <div id="wrapper">
     <div id="dayNames">
-        {#each dayAbbreviations as day, i}
+        {#each { length: 7 } as day, i}
             {#if showWeekends || i < 5}
                 <div class="nameWrapper">
-                    <p class="name">{capitalise(day)}</p>
+                    <p class="name">{capitalise(t(`generic.dayAbbreviations.${i + 1}`))}</p>
                 </div>
             {/if}
         {/each}

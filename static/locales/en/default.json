@@ -41,6 +41,18 @@
 			"6": "S",
 			"7": "S"
 		},
+		"timeUnits": {
+			"day_one": "day",
+			"day_other": "days",
+			"week_one": "week",
+			"week_other": "weeks",
+			"month_one": "month",
+			"month_other": "months"
+		},
 		"showWeekends": "Show weekends"
+	},
+	"miniCalendar": {
+		"previousMonth": "Previous month",
+		"nextMonth": "Next month"
 	}
 }

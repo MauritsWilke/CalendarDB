@@ -50,5 +50,9 @@
 			"month_other": "maanden"
 		},
 		"showWeekends": "Weekenden tonen"
+	},
+	"miniCalendar": {
+		"previousMonth": "Vorige maand",
+		"nextMonth": "Volgende maand"
 	}
 }

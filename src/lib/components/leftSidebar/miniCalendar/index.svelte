@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Temporal } from "@js-temporal/polyfill";
-    import { dayLetterAbbreviations, monthNames } from "scripts/localisation/translations";
+    import { t } from "i18next";
     import { capitalise } from "scripts/utils";
     export let weekNumbers = true;
 
@@ -14,6 +14,7 @@
     let visibleWeeks: visibleDay[][] = [[], [], [], [], [], []];
     let visibleWeekNumbers = [1, 2, 3, 4, 5, 6];
     let visibleMonth = currentDate.month;
+    let visibleMonthName = capitalise(t(`generic.months.${visibleMonth}`));
     let visibleYear = 2023;
 
     $: getMonth(DELTA);
@@ -74,14 +75,14 @@
 
 <div id="wrapper" on:auxclick={resetDelta} on:wheel={scrollEvent}>
     <div id="header">
-        <p id="monthName">{capitalise(monthNames[visibleMonth - 1])} {visibleYear}</p>
+        <p id="monthName">{visibleMonthName} {visibleYear}</p>
 
         <div id="controls">
             <button on:click={() => DELTA--}>
-                <img src="/icons/arrow.svg" alt="Previous month" title="Previous month" />
+                <img src="/icons/arrow.svg" alt="Previous month" title={t("miniCalendar.previousMonth")} />
             </button>
             <button on:click={() => DELTA++}>
-                <img src="/icons/arrow.svg" alt="Next month" id="nextMonth" title="Next month" />
+                <img src="/icons/arrow.svg" alt="Next month" id="nextMonth" title={t("miniCalendar.nextMonth")} />
             </button>
         </div>
     </div>
@@ -99,9 +100,9 @@
 
         <div id="weeks">
             <div id="weekTitles">
-                {#each dayLetterAbbreviations as dayTitle}
+                {#each { length: 7 } as _, i}
                     <div class="dayTitle">
-                        <p>{capitalise(dayTitle)}</p>
+                        <p>{capitalise(t(`generic.dayLetterAbbreviations.${i + 1}`))}</p>
                     </div>
                 {/each}
             </div>

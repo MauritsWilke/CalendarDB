@@ -8,7 +8,7 @@
 
     let visible = false;
 
-    const getTimeUnit = (unit: string) => capitalise(t(`generic.timeUnits.${unit}`, { count: 1, defaultValue: "Table" }));
+    const getTimeUnit = (unit: string) => capitalise(t(`generic.timeUnits.${unit}`, { count: 1 }));
 
     type SelectOption = { value: Views; shortcut: string; text: string };
     const selectOptions: SelectOption[] = [

@@ -5,7 +5,7 @@ import HttpApi, { type HttpBackendOptions } from 'i18next-http-backend';
 i18next
 	.use(HttpApi)
 	.init<HttpBackendOptions>({
-		lng: "nl",
+		lng: "en",
 		fallbackLng: "en",
 		backend: {
 			"loadPath": "/locales/{{lng}}/default.json",

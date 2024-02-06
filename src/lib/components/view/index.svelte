@@ -1,8 +1,8 @@
 <script lang="ts">
+    import { t } from "i18next";
     import ViewDropdown from "./viewDropdown/index.svelte";
     import Month from "./month/index.svelte";
 
-    import { monthNames } from "scripts/localisation/translations";
     import { capitalise } from "scripts/utils";
     import { type Views } from "scripts/types";
     import { Temporal } from "@js-temporal/polyfill";
@@ -13,7 +13,7 @@
 
     // Variables
     // TODO store these settings in localStorage?
-    let visibleMonth = monthNames[currentDate.month - 1];
+    let visibleMonth = capitalise(t(`generic.months.${currentDate.month - 1}`));
     let visibleYear = currentDate.year;
     let selectedView: Views = "month";
     let showWeekends = true;
@@ -22,7 +22,7 @@
 <div id="wrapper">
     <div id="header">
         <div id="info">
-            <p id="month">{capitalise(visibleMonth)}</p>
+            <p id="month">{visibleMonth}</p>
             <p id="year">{visibleYear}</p>
         </div>
 
