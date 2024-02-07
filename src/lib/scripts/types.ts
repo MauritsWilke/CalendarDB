@@ -19,7 +19,7 @@ export type CalendarEvent = {
 		fill: string | null // If there is no fill, generate one automatically
 	},
 	date: {
-		allDay: boolean,
+		allDay: boolean, // If an event is all day, just set start and end to 8am-9am by default?
 		start: number, // Both in epoch milliseconds
 		end: number,
 	},
