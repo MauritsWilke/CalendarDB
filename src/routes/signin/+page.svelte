@@ -1,7 +1,7 @@
 <script lang="ts">
     import Head from "components/head/index.svelte";
     import { goto } from "$app/navigation";
-    import { signInWithGoogle, signInWithEmailAndPassword } from "scripts/firebase/auth";
+    import { signInWithGoogle, signInWithEmailAndPassword } from "scripts/firebase/auth/providers/index";
 
     async function _signInWithGoogle() {
         await signInWithGoogle();
