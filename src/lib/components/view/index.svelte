@@ -13,7 +13,7 @@
 
     // Variables
     // TODO store these settings in localStorage?
-    let visibleMonth = capitalise(t(`generic.months.${currentDate.month - 1}`));
+    let visibleMonth = capitalise(t(`generic.months.${currentDate.month}`));
     let visibleYear = currentDate.year;
     let selectedView: Views = "month";
     let showWeekends = true;
@@ -22,6 +22,7 @@
 <div id="wrapper">
     <div id="header">
         <div id="info">
+            <!-- TOOD have this be synced with the view -->
             <p id="month">{visibleMonth}</p>
             <p id="year">{visibleYear}</p>
         </div>

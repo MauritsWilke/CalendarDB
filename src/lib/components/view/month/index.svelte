@@ -1,12 +1,62 @@
+<!-- 
+	This is a V0.5 of the monthly view, infinite scrolling through the months is yet to come
+ -->
+
 <script lang="ts">
+    import { Temporal } from "@js-temporal/polyfill";
     import { t } from "i18next";
     import { capitalise } from "scripts/utils";
     export let showWeekends = true;
 
     // Constants
+    const calendar = new Temporal.Calendar("iso8601"); // TODO this is used basically everywhere, maybe a global variable?
+    const currentDate = Temporal.Now.plainDate(calendar);
+    type visibleDay = Temporal.PlainDate;
 
     // Variables
-    let visibleWeeks = [[], [], [], [], [], [], [], [], [], []]; // TODO find a good number for here
+    let DELTA = 0;
+    let visibleWeeks: visibleDay[][] = [[], [], [], [], []];
+    let visibleWeekNumbers = [1, 2, 3, 4, 5, 6];
+    let visibleMonth = currentDate.month;
+
+    $: getMonth(DELTA);
+
+    // Similar, but not exactly the same as the mini calendar one
+    // TODO maybe have this function in a centralised script file?
+    function getMonth(delta: number) {
+        visibleWeeks = [[], [], [], [], []];
+        visibleWeekNumbers = [];
+
+        const deltaMonthDuration = Temporal.Duration.from({ months: delta });
+        const requestedDate = Temporal.Now.plainDate(calendar).add(deltaMonthDuration);
+
+        const deltaDayDuration = Temporal.Duration.from({ days: -requestedDate.day + 1 }); // + 1, because months are not arrays
+        const firstDayOfMonth = requestedDate.add(deltaDayDuration).dayOfWeek;
+        const daysToAddFromPrevious = firstDayOfMonth - 1;
+
+        for (let i = daysToAddFromPrevious; i > 0; i--) {
+            const dayDelta = Temporal.Duration.from({ days: -i }).add(deltaDayDuration);
+            const day = requestedDate.add(dayDelta);
+
+            visibleWeeks[0].push(day);
+        }
+
+        for (let i = 0; i < visibleWeeks.length; i++) {
+            for (let j = 0; j < 7; j++) {
+                if (visibleWeeks[i][j]) continue;
+
+                // i * 7 = weeks, j = days, remove requested date to get to 0 (hence +1), remove daysToAddFromPrevious to fix the j
+                const dayDelta = Temporal.Duration.from({ days: i * 7 + j - requestedDate.day + 1 - daysToAddFromPrevious });
+                const day = requestedDate.add(dayDelta);
+
+                visibleWeeks[i].push(day);
+            }
+
+            visibleWeekNumbers[i] = visibleWeeks[i][0].weekOfYear;
+        }
+
+        visibleMonth = requestedDate.month;
+    }
 </script>
 
 <div id="wrapper">
@@ -24,9 +74,10 @@
         {#each visibleWeeks as week}
             <div class="week">
                 {#each { length: showWeekends ? 7 : 5 } as _, i}
-                    <div class="day">
+                    {@const day = week[i]}
+                    <div class="day" class:weekend={i > 4}>
                         <div class="icons">
-                            <div class="date">{i + 1}</div>
+                            <div class="date" class:today={day.equals(currentDate)} class:previousMonth={day.month !== visibleMonth}>{day.day}</div>
                         </div>
 
                         <div class="events"></div>
@@ -131,7 +182,22 @@
                             font-size: 0.75rem;
                             font-weight: 400;
                         }
+
+                        .today {
+                            background: $highlight;
+                            border-radius: 50%;
+
+                            color: #fff;
+                        }
+
+                        .previousMonth {
+                            color: $primary-grey-70;
+                        }
                     }
+                }
+
+                .weekend {
+                    background: $off-white;
                 }
 
                 &:first-child {
