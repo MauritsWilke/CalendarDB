@@ -12,7 +12,7 @@ const firstEvent: CalendarEvent = {
 		fill: "#fbf9f2"
 	},
 	date: {
-		start: 0,
+		start: 0, // TODO set the start to today?
 		end: 0,
 		allDay: true
 	},
