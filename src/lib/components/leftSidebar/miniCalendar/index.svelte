@@ -14,9 +14,9 @@
     let visibleWeeks: visibleDay[][] = [[], [], [], [], [], []];
     let visibleWeekNumbers = [1, 2, 3, 4, 5, 6];
     let visibleMonth = currentDate.month;
-    let visibleMonthName = capitalise(t(`generic.months.${visibleMonth}`));
     let visibleYear = 2023;
 
+    $: visibleMonthName = (visibleMonth: number) => capitalise(t(`generic.months.${visibleMonth}`));
     $: getMonth(DELTA);
 
     function getMonth(delta: number) {
@@ -75,7 +75,7 @@
 
 <div id="wrapper" on:auxclick={resetDelta} on:wheel={scrollEvent}>
     <div id="header">
-        <p id="monthName">{visibleMonthName} {visibleYear}</p>
+        <p id="monthName">{visibleMonthName(visibleMonth)} {visibleYear}</p>
 
         <div id="controls">
             <button on:click={() => DELTA--}>
