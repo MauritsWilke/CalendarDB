@@ -8,7 +8,8 @@ type CustomKey =
 	{ type: "URL", value: URL } | // TODO maybe type string fits better
 	{ type: "email", value: string } |
 	{ type: "phone", value: string } |
-	{ type: "colour", value: string };
+	{ type: "colour", value: string } |
+	{ type: "icon", value: string }; // Yet to decide
 
 export type CalendarEvent = {
 	title: string,
