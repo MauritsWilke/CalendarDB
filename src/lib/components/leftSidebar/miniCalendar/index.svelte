@@ -79,10 +79,10 @@
 
         <div id="controls">
             <button on:click={() => DELTA--}>
-                <img src="/icons/arrow.svg" alt="Previous month" title={t("miniCalendar.previousMonth")} />
+                <span class="material-symbols-outlined" title={t("miniCalendar.previousMonth")}>keyboard_arrow_left</span>
             </button>
             <button on:click={() => DELTA++}>
-                <img src="/icons/arrow.svg" alt="Next month" id="nextMonth" title={t("miniCalendar.nextMonth")} />
+                <span class="material-symbols-outlined" title={t("miniCalendar.nextMonth")}>keyboard_arrow_right</span>
             </button>
         </div>
     </div>
@@ -196,10 +196,6 @@
                         background: $border;
                         cursor: pointer;
                     }
-                }
-
-                #nextMonth {
-                    transform: rotate(180deg);
                 }
             }
         }
