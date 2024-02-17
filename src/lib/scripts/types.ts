@@ -1,15 +1,14 @@
 export type Views = "day" | "week" | "month" | "table";
 
-type CustomKey =
-	{ type: "string", value: string } |
-	{ type: "number", value: number } |
-	{ type: "date", value: number } | // In epoch milliseconds
-	{ type: "checkbox", value: boolean } |
-	{ type: "URL", value: URL } | // TODO maybe type string fits better
-	{ type: "email", value: string } |
-	{ type: "phone", value: string } |
-	{ type: "colour", value: string } |
-	{ type: "icon", value: string }; // Yet to decide
+export type CustomKey =
+	{ type: "string", value: string, key: string } |
+	{ type: "number", value: number, key: string } |
+	{ type: "date", value: number, key: string } | // In epoch milliseconds
+	{ type: "checkbox", value: boolean, key: string } |
+	{ type: "URL", value: URL, key: string } | // TODO maybe type string fits better
+	{ type: "email", value: string, key: string } |
+	{ type: "phone", value: string, key: string } |
+	{ type: "colour", value: string, key: string };
 
 export type CalendarEvent = {
 	title: string,
