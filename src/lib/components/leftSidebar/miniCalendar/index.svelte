@@ -181,6 +181,10 @@
                 width: calc(1.5rem + 1.5rem + 6px); // 2 times the button + the spacing in between
 
                 button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
                     background-color: transparent;
                     border: none;
 
@@ -195,6 +199,10 @@
                     &:hover {
                         background: $border;
                         cursor: pointer;
+                    }
+
+                    span {
+                        font-size: 1.5rem;
                     }
                 }
             }
