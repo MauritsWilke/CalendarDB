@@ -23,7 +23,7 @@ export type CalendarEvent = {
 		start: number, // Both in epoch milliseconds
 		end: number,
 	},
-	description: "Welcome to CalendarDB!",
+	description: string,
 	customKeys: CustomKey[]
 }
 
