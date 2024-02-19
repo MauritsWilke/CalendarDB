@@ -16,6 +16,7 @@ const firstEvent: CalendarEvent = {
 		end: 0,
 		allDay: true
 	},
+	description: "Welcome to CalendarDB",
 	customKeys: []
 }
 
